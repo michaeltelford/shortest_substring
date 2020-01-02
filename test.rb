@@ -10,11 +10,11 @@ class ShortestSubstring < Minitest::Test
   end
 
   def test_shortest_substring__constraints
-    # 1 ≤ s.size ≤ 105
+    # Assert 1 < s.size < 105
     assert_raises(StandardError) { shortest_substring('a') }
     assert_raises(StandardError) { shortest_substring('a' * 105) }
 
-    # Only allow ASCII[a-z] characters
+    # Assert ASCII[a-z] characters
     assert_raises(StandardError) { shortest_substring('a!') }
   end
 end
