@@ -6,16 +6,16 @@ def shortest_substring(str)
   raise 'str must be > 1 and < 105' unless str.size.between?(2, 104)
   raise 'str must be ASCII[a-z]' unless str.match?(/^[a-z]+$/)
 
-  chars = Set.new(str.chars)
-  matches = {}
+  chars   = Set.new(str.chars)
+  matches = Set.new
 
   substring = str.dup
   while match = find_match(substring, chars)
-    matches[match.size] = match
-    substring.gsub!(match, '')
+    matches << match.size
+    substring.sub!(match, '')
   end
 
-  matches.keys.sort.first
+  matches.to_a.sort.first
 end
 
 ### Helper Functions ###
